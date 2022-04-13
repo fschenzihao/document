@@ -127,7 +127,7 @@ GO
 
 |                           元数据表                           |                          DDL 触发器                          |                      cdc schema（架构）                      |                        cdc 数据库用户                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](/images/sqlserver-cdc/%7BE48E7325-2966-4995-8EF5-04C1AA2D15B5%7D.png) | ![](/images/sqlserver-cdc/%7B33EB10F7-BF6B-436C-8908-596C7CE9A606%7D.png) | ![](/images/sqlserver-cdc/%7B5E20673A-9DF1-4F95-8465-D0490B02F428%7D.png) | ![](/images/sqlserver-cdc/%7B970FAF5E-5749-4E29-935D-905F9040663D%7D.png) |
+| ![](/images/sqlserver-cdc/E48E7325.png) | ![](/images/sqlserver-cdc/33EB10F7.png) | ![](/images/sqlserver-cdc/5E20673A.png) | ![](/images/sqlserver-cdc/970FAF5E.png) |
 
 - 即使恢复模式设置为简单恢复，日志截断点也不会向前推进，直到为捕获标记的所有更改都已由捕获进程收集为止。 如果捕获进程未运行且有要收集的更改，执行 CHECKPOINT 将不会截断日志。
 
@@ -192,7 +192,7 @@ GO
 
 变更表是关联`捕获实例`的，命名方式为：<捕获实例名称>_CT。
 
-![](/images/sqlserver-cdc/%7B3CE944AD-66D8-401D-A96C-2596D444A28E%7D.png)
+![](/images/sqlserver-cdc/3CE944AD.png)
 
 
 
@@ -214,7 +214,7 @@ GO
 
   ​	返回指定的时间间隔内发生更改的每个非重复行，此函数仅返回一项更改
 
-![](/images/sqlserver-cdc/%7B89548E8B-9A1D-49C8-8E76-8DC996F9D472%7D.png)
+![](/images/sqlserver-cdc/89548E8B.png)
 
 
 
@@ -228,7 +228,7 @@ GO
 
 首次启动表启用变更数据捕获时，会创建两个关联数据库的SQL Server代理作业。捕获和清除作业都是使用默认参数创建的。  
 
-​		![](/images/sqlserver-cdc/%7BD874E031-2F79-4DF4-A881-C42B6B468F44%7D.png)
+​		![](/images/sqlserver-cdc/D874E031.png)
 
 - 捕获更改表作业（capture）
 
@@ -479,7 +479,7 @@ GO
 
 例如：
 
-![](/images/sqlserver-cdc/%7B6F740C70-B31F-4CC9-9861-B7DF916047DE%7D.png)
+![](/images/sqlserver-cdc/6F740C70.png)
 
 | systranschemas  |          |                              |
 | :-------------- | :------- | :--------------------------- |

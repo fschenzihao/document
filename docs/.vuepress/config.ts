@@ -4,7 +4,7 @@ import { navbar, sidebar } from './configs'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base: '/document/',
-  // public:'docs/.vuepress/public',
+  public:'docs/.vuepress/public',
 
   // 站点配置
   lang: 'zh-CN',

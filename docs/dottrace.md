@@ -24,20 +24,20 @@ Jetbrains dotTrace是一款.NET应用程序性能分析器。
 
 ### 2.1 打开dotTrace软件。
 
-<img src="./step_1.png" alt="步骤1"  />	
+![](/images/Jetbrains-dotTrace/step1.png)
 
 ### 2.2 新建分析
 
-![](/images/Jetbrains-dotTrace/step_2_3_4.png)
+![](/images/Jetbrains-dotTrace/step234.png)
 
-![](/images/Jetbrains-dotTrace/step_5_6_7.png)
+![](/images/Jetbrains-dotTrace/step567.png)
 
-![](/images/Jetbrains-dotTrace/step_8.png)
+![](/images/Jetbrains-dotTrace/step8.png)
 
 ### 2.3 在M3中进行性能问题重现操作。
 
 ### 2.4 重现操作完成后，保存分析文件。
 
-![](/images/Jetbrains-dotTrace/step_9_10.png)
+![](/images/Jetbrains-dotTrace/step910.png)
 
-![](/images/Jetbrains-dotTrace/step_11.png)
+![](/images/Jetbrains-dotTrace/step11.png)
