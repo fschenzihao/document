@@ -1,0 +1,15 @@
+{
+  "name": "sqlserver-docs",
+  "version": "0.0.1",
+  "description": "SQL Server 文档",
+  "main": "index.js",
+  "author": "chenzihao",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.38"
+  }
+}
