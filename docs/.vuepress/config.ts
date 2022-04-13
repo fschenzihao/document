@@ -3,7 +3,7 @@ import type { DefaultThemeOptions } from 'vuepress'
 import { navbar, sidebar } from './configs'
 
 export default defineUserConfig<DefaultThemeOptions>({
-  base: '/',
+  base: '/document/',
   // public:'docs/.vuepress/public',
 
   // 站点配置
