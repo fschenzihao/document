@@ -1,9 +1,4 @@
-﻿> 📃版本: 1.8
->
->📆日期: 2022-01-01
-
-
-# SQL Server 性能分析
+﻿# SQL Server 性能分析
 
 ## 1 索引
 
@@ -55,13 +50,12 @@ GO
 
 ### 1.2. 重新生成或重新组织索引
 
-> ==注意==
->
-> - 重新生成或重新组织小型行存储索引可能不会减少碎片。
->
-> - 收缩数据库后，可能产生索引碎片。
+::: warning
+- 重新生成或重新组织小型行存储索引可能不会减少碎片。
+- 收缩数据库后，可能产生索引碎片。
+:::
 
-```sql
+```sql{8-9}
 -- 以下示例将自动重新组织或重新生成数据库中平均碎片超过 10％ 的所有分区。
 DECLARE @fragment float,
 		@database_id smallint
@@ -158,10 +152,15 @@ GO
 ```
 ### 1.3. 查找缺失索引组的缺失索引及其列详细信息
 
->**注意：**
->返回的信息 `sys.dm_db_missing_index_group_stats` 由每次查询执行更新，而不是每次查询编译或重新编译更新。 使用情况统计信息不会持久保存，而只会在重新启动数据库引擎之前保存。 如果数据库管理员要在服务器回收后保留使用情况统计信息，则应该定期制作缺失索引信息的备份副本。 使用 `sqlserver_start_time sys.dm_os_sys_info` 中的列查找上次数据库引擎启动时间。
->
->>[与索引相关的动态管理视图和函数](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/index-related-dynamic-management-views-and-functions-transact-sql?view=sql-server-ver15)
+::: warning
+ `sys.dm_db_missing_index_group_stats`记录的使用情况统计信息。
+ - 由每次查询执行更新，而不是每次查询编译或重新编译更新。 
+ - 使用情况统计信息不会持久保存，重新启动数据库引擎后会重置。 如果要保留使用情况统计信息，则应该定期制作缺失索引信息的备份副本。
+
+有关详细信息，请参阅[与索引相关的动态管理视图和函数](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/index-related-dynamic-management-views-and-functions-transact-sql?view=sql-server-ver15)
+
+相关章节：[查询上次数据库引擎启动时间](#_5-1-查询sql-server启动时间)
+:::
 
 ```sql
 /* 查找缺失索引组的缺失索引及其列详细信息
@@ -217,11 +216,11 @@ ORDER BY gStats.avg_total_user_cost * gStats.avg_user_impact * (gStats.user_seek
 - 如果新数据在表中均匀分布，则设置 0 到 100 之间对性能有利。
 - 如果新数据都添加到表的末尾，则设置0或100对性能有利。
 
-> ==注意==
->
-> 在许多工作负载中，提高页面密度会比减少碎片更能提升性能。
->
-> 为避免在不必要的情况下降低页面密度，Microsoft 不建议将填充因子设置为 100 或 0 以外的值，除非索引遇到大量[页面拆分](https://docs.microsoft.com/zh-cn/sql/relational-databases/indexes/specify-fill-factor-for-an-index?view=sql-server-ver15#page-splits)，例如，包含非顺序 GUID 值的前导列并且频繁修改的索引。
+::: warning
+在许多工作负载中，提高页面密度会比减少碎片更能提升性能。
+
+为避免在不必要的情况下降低页面密度，Microsoft 不建议将填充因子设置为 100 或 0 以外的值，除非索引遇到大量[页面拆分](https://docs.microsoft.com/zh-cn/sql/relational-databases/indexes/specify-fill-factor-for-an-index?view=sql-server-ver15#page-splits)，例如，包含非顺序 GUID 值的前导列并且频繁修改的索引。
+::: 
 
 ```sql
 USE [数据库名];  
@@ -365,9 +364,9 @@ GO
 
 - **移动TempDB数据库**
 
-  > 注意
-  >
-  > 由于每次启动 SQL Server 实例时都将重新创建 tempdb，所以不必实际移动数据和日志文件。
+::: warning
+由于每次启动 SQL Server 实例时都将重新创建 tempdb，所以不必实际移动数据和日志文件。
+:::
 
   1. 查询`tempdb` 数据库的逻辑文件名称
 
@@ -459,22 +458,23 @@ EXEC sp_removedbreplication [数据库名称]
 
 
 
-> ==**注意**==
-> 如果手动执行 sp_repldone，则可以使已传送的事务的次序和一致性无效。
-> [MSDN文档： sp_repldone (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-repldone-transact-sql?view=sql-server-ver15)   [sp_removedbreplication(Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-removedbreplication-transact-sql?view=sql-server-ver15)
+::: warning
+如果手动执行 sp_repldone，则可以使已传送的事务的次序和一致性无效。
 
+有关详细信息，请参阅[sp_repldone (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-repldone-transact-sql?view=sql-server-ver15)   [sp_removedbreplication(Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-removedbreplication-transact-sql?view=sql-server-ver15)
+:::
 ---
 
 ## 4 执行计划
 
 ### 4.1  清除计划缓存
 
-> ``注意``
->
-> - DBCC FREEPROCCACHE 不清除本机编译的存储过程的执行统计信息。
-> - 清除过程（计划）缓存会逐出所有计划，并且传入查询执行将编译新计划，而不是重复使用任何以前缓存的计划，这可能导致查询性能骤降。
->
-> [MSND文档：DBCC FREEPROCCACHE(Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/database-console-commands/dbcc-freeproccache-transact-sql?view=sql-server-ver15#examples-ssnoversion)
+::: warning
+- DBCC FREEPROCCACHE 不清除本机编译的存储过程的执行统计信息。
+- 清除过程（计划）缓存会逐出所有计划，并且传入查询执行将编译新计划，而不是重复使用任何以前缓存的计划，这可能导致查询性能骤降。
+
+有关详细信息，请参阅[DBCC FREEPROCCACHE(Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/database-console-commands/dbcc-freeproccache-transact-sql?view=sql-server-ver15#examples-ssnoversion)
+:::
 
 1. 清除所有计划缓存
 
@@ -498,7 +498,7 @@ EXEC sp_removedbreplication [数据库名称]
    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS st  
    WHERE text LIKE N'SELECT * FROM Person.Address%';  
    GO  
-   /* 查询结果
+   /* 执行结果
    plan_handle                                         text  
    --------------------------------------------------  -----------------------------  
    0x060006001ECA270EC0215D05000000000000000000000000  SELECT * FROM Person.Address;  
@@ -507,7 +507,19 @@ EXEC sp_removedbreplication [数据库名称]
    DBCC FREEPROCCACHE (0x060006001ECA270EC0215D05000000000000000000000000);  
    ```
 
-   
+## 5 系统信息
+
+### 5.1 查询SQL Server启动时间
+``` sql
+-- **** 查询SQL Server启动时间 ****
+select  
+sqlserver_start_time as [启动日期],
+(ms_ticks-sqlserver_start_time_ms_ticks)/1000/60/60.0 as [持续运行时间（小时）]
+from sys.dm_os_sys_info
+```
+**执行结果**
+
+![](/images/sqlserver-performance-analysis/5.1.jpg)
 
 
 
