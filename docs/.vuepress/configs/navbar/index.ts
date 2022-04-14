@@ -7,11 +7,11 @@ export const zh: NavbarConfig = [
     link: './',
   },
   {
-    text: `v0.0.1`,
+    text: version,
     children: [
       {
         text: '更新日志',
-        link: 'http://baidu.com',
+        link: 'https://github.com/fschenzihao/document/commits/master',
       }
     ],
   }
