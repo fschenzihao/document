@@ -1,10 +1,11 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { navbar, sidebar } from './configs'
+import { copyCode } from 'vuepress-plugin-copy-code2'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base: '/document/',
-  public:'docs/.vuepress/public',
+  public: 'docs/.vuepress/public',
 
   // 站点配置
   lang: 'zh-CN',
@@ -18,7 +19,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     // 导航栏配置
     navbar: navbar.zh,
     // 侧边栏配置
-    sidebar: sidebar.zh, 
+    sidebar: sidebar.zh,
 
     // 参与编辑页信息相关
     // 项目仓库的 URL
@@ -47,5 +48,11 @@ export default defineUserConfig<DefaultThemeOptions>({
       '进错地方了⛔',
     ],
     backToHome: '返回首页',
-  }
+  },
+  plugins: [
+    copyCode({
+      duration: 2500,
+      pure: true,
+    }),
+  ]
 })
