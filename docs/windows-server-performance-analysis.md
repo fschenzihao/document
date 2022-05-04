@@ -1,9 +1,3 @@
->📃版本: 1.0
->
->📆日期: 2021-12-16
-
-[Toc]
-
 # Windows Server 系统的性能分析
 
 windows系统的性能分析可以通过以下两种工具进行：
@@ -21,31 +15,31 @@ windows系统的性能分析可以通过以下两种工具进行：
 
   依次单击"开始"、"**Windows 管理工具**"，右键单击"**资源监视器**"，然后点击"**以管理员身份运行**"。
 
-  ![Open](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/Open.jpg)
+  ![Open](/images/resource-monitor/Open.jpg)
 
 - 通过命令提示符打开。
 
   在**"运行"**窗口中输入命令`perfmon /res`
 
-  ![Open_cmd](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/Open_cmd.jpg)
+  ![Open_cmd](/images/resource-monitor/Open_cmd.jpg)
 
 ### 1.2 CPU
 
 可以通过对`CPU`或`平均CPU`列倒序排序，获得使用CPU资源最大的应用程序或服务。
 
-![CPU](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/CPU.JPG)
+![CPU](/images/resource-monitor/CPU.JPG)
 
 ### 1.3 内存
 
-![Memory](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/Memory.JPG)
+![Memory](/images/resource-monitor/Memory.JPG)
 
 ### 1.4 硬盘
 
-![HardDisk](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/HardDisk.JPG)
+![HardDisk](/images/resource-monitor/HardDisk.JPG)
 
 ### 1.5 网络
 
-![NetWork](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E8%B5%84%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8/NetWork.JPG)
+![NetWork](/images/resource-monitor/NetWork.JPG)
 
 ---
 
@@ -61,31 +55,31 @@ windows系统的性能分析可以通过以下两种工具进行：
 
   在**"运行"**窗口中输入命令`perfmon`
 
-![Summary](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/Summary.jpg)
+![Summary](/images/performance-monitor/Summary.jpg)
 
 ### 2.2 新建数据收集器
 
 #### 2.2.1 新建数据收集器
 
-![CreateNewDataCollector](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector.jpg)
+![CreateNewDataCollector](/images/performance-monitor/CreateNewDataCollector.jpg)
 
 ####  2.2.2 设置"数据收集器"名称和创建方式
 
-![CreateNewDataCollector_Name](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_Name.jpg)
+![CreateNewDataCollector_Name](/images/performance-monitor/CreateNewDataCollector_Name.jpg)
 
 #### 2.2.3 选择收集的类型数据
 
-![CreateNewDataCollector_Type](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_Type.jpg)
+![CreateNewDataCollector_Type](/images/performance-monitor/CreateNewDataCollector_Type.jpg)
 
 #### 2.2.4 选择性能计数器
 
-![CreateNewDataCollector_AddCounter](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_AddCounter.jpg)
+![CreateNewDataCollector_AddCounter](/images/performance-monitor/CreateNewDataCollector_AddCounter.jpg)
 
 添加以下计数器：
 
 - `PhysicalDisk`：物理磁盘
 
-![CreateNewDataCollector_SelectCounter](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_SelectCounter.jpg)
+![CreateNewDataCollector_SelectCounter](/images/performance-monitor/CreateNewDataCollector_SelectCounter.jpg)
 
 - `Processor`： CPU。步骤同上。
 
@@ -93,19 +87,19 @@ windows系统的性能分析可以通过以下两种工具进行：
 
 #### 2.2.5 设置日志保存路径
 
-![CreateNewDataCollector_DataFilePath](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_DataFilePath.jpg)
+![CreateNewDataCollector_DataFilePath](/images/performance-monitor/CreateNewDataCollector_DataFilePath.jpg)
 
 #### 2.2.6 创建完成
 
-![CreateNewDataCollector_Finish](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/CreateNewDataCollector_Finish.jpg)
+![CreateNewDataCollector_Finish](/images/performance-monitor/CreateNewDataCollector_Finish.jpg)
 
 ==设置"性能收集器"的持续时间==
 
-![DataCollector_Properties_StopCondition](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/DataCollector_Properties_StopCondition.jpg)
+![DataCollector_Properties_StopCondition](/images/performance-monitor/DataCollector_Properties_StopCondition.jpg)
 
 ### 2.3 启动"数据收集器"
 
-![CreateNewDataCollector](https://gitee.com/ChanHowe/document/raw/master/%E5%9B%BE%E5%BA%8A/%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%99%A8/DataCollector_Start.jpg)
+![CreateNewDataCollector](/images/performance-monitor/DataCollector_Start.jpg)
 
 
 
