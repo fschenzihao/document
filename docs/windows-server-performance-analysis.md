@@ -27,19 +27,19 @@ windows系统的性能分析可以通过以下两种工具进行：
 
 可以通过对`CPU`或`平均CPU`列倒序排序，获得使用CPU资源最大的应用程序或服务。
 
-![CPU](/images/resource-monitor/CPU.JPG)
+![CPU](/images/resource-monitor/CPU.jpg)
 
 ### 1.3 内存
 
-![Memory](/images/resource-monitor/Memory.JPG)
+![Memory](/images/resource-monitor/Memory.jpg)
 
 ### 1.4 硬盘
 
-![HardDisk](/images/resource-monitor/HardDisk.JPG)
+![HardDisk](/images/resource-monitor/HardDisk.jpg)
 
 ### 1.5 网络
 
-![NetWork](/images/resource-monitor/NetWork.JPG)
+![NetWork](/images/resource-monitor/NetWork.jpg)
 
 ---
 
