@@ -1,9 +1,11 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { navbar, sidebar } from './configs'
-import { copyCode } from 'vuepress-plugin-copy-code2'
+import  copyCode  from 'vuepress-plugin-copy-code2'
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+const { defaultTheme } = require('@vuepress/theme-default')
 
-export default defineUserConfig<DefaultThemeOptions>({
+module.exports = {
   base: '/document/',
   public: 'docs/.vuepress/public',
 
@@ -13,8 +15,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '',
 
   // 主题和它的配置
-  theme: '@vuepress/theme-default',
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'images/logo/logo.png',
     // 导航栏配置
     navbar: navbar.zh,
@@ -48,11 +49,22 @@ export default defineUserConfig<DefaultThemeOptions>({
       '进错地方了⛔',
     ],
     backToHome: '返回首页',
-  },
+  }),
   plugins: [
     copyCode({
       duration: 2500,
       pure: true,
     }),
+    docsearchPlugin({
+      apiKey: 'b33f6df6a3320c1166275edae4db2d80',
+      appId:'9XT7J1NNVO',
+      indexName:'fschenzihao',
+      placeholder: '搜索文档',
+      translations: {
+        button: {
+          buttonText: '搜索文档',
+        },
+      },
+    }),
   ]
-})
+}
