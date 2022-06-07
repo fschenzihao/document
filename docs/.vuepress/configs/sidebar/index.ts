@@ -9,6 +9,7 @@ export const zh: SidebarConfig = {
       '/sqlserver-cdc.md',
       'dottrace.md',
       'windows-server-performance-analysis.md',
+      'sqlserver-common-functions.md',
     ]
   }]
 }

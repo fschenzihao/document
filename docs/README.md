@@ -14,4 +14,5 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 3.  [SQL Server 变更数据捕获（CDC）](./sqlserver-cdc.md)
 4.  [dotTrace 性能分析器使用说明](./dottrace.md)
 5.  [Windows Server 系统的性能分析](./windows-server-performance-analysis.md)
+6.  [SQL Server 常用功能相关](./sqlserver-common-functions.md)
 
