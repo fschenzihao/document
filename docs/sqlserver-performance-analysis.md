@@ -55,23 +55,26 @@ GO
 - 收缩数据库后，可能产生索引碎片。
 :::
 
-```sql{8-9}
+```sql{9-11}
 -- 以下示例将自动重新组织或重新生成数据库中平均碎片超过 10％ 的所有分区。
 DECLARE @fragment float,
-		@database_id smallint
+		@database_id smallint,
+    @dataBase_name nvarchar(20)
 
 /********请先修改参数***********
  *↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 
-set @database_id = DB_ID('这里写数据库名称') -- 这里写数据库名称
+USE [这里写数据库名称]  -- 这里写数据库名称
+set @dataBase_name = '这里写数据库名称' -- 这里写数据库名称
 set @fragment = 10 -- 碎片百分比，大于此数值的索引将执行重建。
 
 /*↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*
 *********** 请先修改参数******/
 
+set @database_id = DB_ID(@dataBase_name)
 IF @database_id = 0 or @database_id is null
 BEGIN
-	PRINT '执行失败:[@database_id]参数值无效!'
+	PRINT '执行失败:[@dataBase_name](数据库名称)参数值无效!'
 	return
 END
  
