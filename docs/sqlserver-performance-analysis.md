@@ -250,15 +250,68 @@ SELECT i.name AS [索引]
     ,COL_NAME(ic.object_id,ic.column_id) AS [索引列]  
     ,ic.index_column_id  
     ,ic.key_ordinal AS [索引列的序号]
-,ic.is_included_column AS [索引列是否属包含列]
+    ,ic.is_included_column AS [索引列是否属包含列]
 FROM sys.indexes AS i  
 INNER JOIN sys.index_columns AS ic
     ON i.object_id = ic.object_id AND i.index_id = ic.index_id  
 WHERE i.object_id = OBJECT_ID('SMInvoiceDetail'); --  表名
 ```
 
-有关详细信息，请参阅[sys.index_columns](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=sql-server-ver15)
+> 有关详细信息，请参阅[sys.index_columns](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=sql-server-ver15)
 
+### 1.6 查询索引使用统计
+
+返回索引操作的计数以及上次执行每种操作的时间。
+
+统计结果中的 `user_updates` (用户更新次数) 列是基础表或视图上插入、更新或删除操作导致的索引的维护计数器。 可以使用此视图确定应用程序极少使用的索引。 还可以使用此视图确定引发维护开销的索引。 您可能要删除引发维护开销但不用于查询或只是偶尔用于查询的索引。
+
+::: warning
+每当进行 SQL Server 服务重启和数据库分离\关闭时，统计信息都将会被清空重置。
+:::
+
+```sql
+USE [输入数据库名]
+GO
+SELECT
+  DB_Name(dm_ius.database_id) AS [数据库名]
+  , o.name AS [表名]
+  , p.TableRows AS 表行数
+  , i.name AS [索引名]
+  , i.type_desc AS [索引类型]
+  , QUOTENAME(dm_ius.user_seeks) 
+    + '/' + QUOTENAME(dm_ius.user_scans) 
+    + '/' + QUOTENAME(dm_ius.user_lookups) 
+    + '/' + QUOTENAME(dm_ius.user_updates) AS [用户【搜索/扫描/查找/更新】次数]
+  , dm_ius.last_user_seek AS [用户上次执行搜索的时间]
+  , 'DROP INDEX ' + QUOTENAME(i.name) + ' ON ' + QUOTENAME(s.name) + '.' + QUOTENAME(OBJECT_NAME(dm_ius.OBJECT_ID)) AS '删除索引语句'
+FROM sys.dm_db_index_usage_stats dm_ius
+	Left JOIN sys.indexes i 
+	  ON i.index_id = dm_ius.index_id AND dm_ius.OBJECT_ID = i.OBJECT_ID
+	Left JOIN sys.objects o 
+	  ON dm_ius.OBJECT_ID = o.OBJECT_ID
+	Left JOIN sys.schemas s 
+	  ON o.schema_id = s.schema_id
+	Left JOIN (SELECT SUM(p.rows) TableRows, p.index_id, p.OBJECT_ID FROM sys.partitions p GROUP BY p.index_id, p.OBJECT_ID) p 
+	  ON p.index_id = dm_ius.index_id AND dm_ius.OBJECT_ID = p.OBJECT_ID
+WHERE 
+-- 用户定义的表
+OBJECTPROPERTY(dm_ius.OBJECT_ID,'IsUserTable') = 1
+-- 非聚集索引
+AND i.type_desc = 'NONCLUSTERED'
+AND i.is_primary_key = 0
+AND i.is_unique_constraint = 0
+
+/** 指定数据库条件 */
+--AND dm_ius.database_id = DB_ID('输入数据库名')
+/** 指定表名条件 */
+--AND o.name='表名'  
+
+ORDER BY (dm_ius.user_seeks + dm_ius.user_scans + dm_ius.user_lookups) ASC
+```
+**执行结果**
+![执行结果](/images/sqlserver-performance-analysis/1.6.jpg)
+
+> 有关详细信息，请参阅[sys.dm_db_index_usage_stats (Transact-SQL)](https://docs.microsoft.com/zh-cn/previous-versions/sql/sql-server-2012/ms188755(v=sql.110))
 ------
 
 ## 2 数据库文件和文件组
