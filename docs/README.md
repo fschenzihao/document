@@ -24,3 +24,4 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 
 #### Node.js
 1.  [如何写一个 TypeScript 库](./nodejs/how-to-write-a-typescript-library.md)
+2.  [package.json 指南](./nodejs/package.json-manual.md)
