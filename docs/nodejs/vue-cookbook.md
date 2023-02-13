@@ -1,7 +1,7 @@
 ### 问题 1：
 
-component inside <Transition> renders non-element root node that cannot be animated
-＜Transition＞中的组件渲染无法设置动画的非元素根节点
+component inside `<Transition>` renders non-element root node that cannot be animated
+`<Transition>`中的组件渲染无法设置动画的非元素根节点
 **解决方案：**
 Transition 包裹的必须是一个单根的元素。例如：
 不能这样 ❌：
