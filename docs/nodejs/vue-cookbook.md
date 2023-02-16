@@ -63,6 +63,10 @@ Transition 包裹的必须是一个单根的元素。例如：
 
 4.当 `ts-erp-page` 打包处理 `c:\ts-erp-ui\dist\index.mjs` 里的 `import { ref } from 'vue'`相关语句时，加载了`c:\ts-erp-ui\node_modules\vue`下的`vue`模块。造成两个 vue 实例。
 
+详细信息：[Node.js_从 node_modules 目录加载](http://nodejs.cn/api-v16/modules.html#loading-from-node_modules-folders)
+
+**疑问：**但是 vite dev 模式下没有出现这个问题。待续。。。
+
 **解决方案：**
 
 `ts-erp-page` 项目设置相关模块的别名
