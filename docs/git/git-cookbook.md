@@ -101,3 +101,21 @@ index 95e602f..f16fcbd 100644
 这个命令会将暂存区中的文件提交。如果暂存区为空，则只是修改提交信息。
 ::: 
 详情参阅:[git-commit]( https://git-scm.com/docs/git-commit), [Git-基础-撤消操作](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C)
+
+
+
+## git grep
+
+全库搜索
+
+```sh
+git grep [-w] [-W] [-n] 关键字
+```
+
+选项说明：
+
+- `-w` : 正则匹配关键字
+- `-W` : 显示关键字所在函数的上下文 
+- `-n` : 显示行号
+- `-F` : 固定字符串
+- `-l` : 只显示文件名
