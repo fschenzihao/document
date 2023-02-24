@@ -2,9 +2,8 @@
 
 ## 退出编辑
 
-` W` + `Q`
-
-
+- ` W` + `Q`
+- :wq
 
 ## git blame 
 
@@ -87,3 +86,18 @@ index 95e602f..f16fcbd 100644
 ```
 
 详情参阅:[cli-git-show](https://git-scm.com/docs/git-show)，[Git-工具-选择修订版本](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%80%89%E6%8B%A9%E4%BF%AE%E8%AE%A2%E7%89%88%E6%9C%AC)
+
+
+
+## git commit --amend
+
+有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了，就需要用到 `git commit --amend` 命令。
+
+1. 输入命令 `git commit --amend`
+2. 键入`：i`  进入了输入模式
+3. 修改完成后，按下 `Esc` 键退出编辑模式，在键入 `:wq` `回车键` 退出并保存修改，完成提交。
+
+::: tip 
+这个命令会将暂存区中的文件提交。如果暂存区为空，则只是修改提交信息。
+::: 
+详情参阅:[git-commit]( https://git-scm.com/docs/git-commit), [Git-基础-撤消操作](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C)
