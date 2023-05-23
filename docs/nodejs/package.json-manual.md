@@ -197,9 +197,9 @@ UNLICENSED： 您不想根据任何条款授予其他人使用私有或未发布
 ```json
 {
   "scripts": {
-    "preinstall": "echo preinstall",
-    "install": "echo install",
-    "postinstall": "echo postinstall",
+    "prebuild": "echo prebuild",
+    "build": "echo build",
+    "postbuild": "echo postbuild",
     "prepublish": "echo prepublish",
     "prepare": "echo prepare"
   }
@@ -208,14 +208,21 @@ UNLICENSED： 您不想根据任何条款授予其他人使用私有或未发布
 
 脚本命令。这些命令可以通过 `npm run <script>`、`yarn run <script>` 运行。
 
-特殊脚本名称：
+#### 脚本钩子
+npm 脚本有 `pre` 和 `post` 两个钩子。
+
+例如：`build` 脚本命令的钩子就是 `prebuild` 和 `postbuild`。
+执行 `npm run build`时，会自动按照下面的顺序执行。
+
+```sh
+npm run prebuild && npm run build && npm run postbuild
+```
 
 - `preinstall`： 在 `npm install` 之前自动执行。
-- `preinstall`、 `prepare`、`prepublish`：在 `npm install` 之后自动自动执行。
-- `prebuild`：在 `npm build` 之前自动执行。
-- `postbuild`：在 `npm build` 之后自动执行。
-- ...
+- `postinstall`、`prepare`、：在 `npm install` 之后自动自动执行。
 
+
+[更新信息，请参阅：](http://ruanyifeng.com/blog/2016/10/npm_scripts.html)
 ### config
 
 ```json
