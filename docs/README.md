@@ -25,12 +25,13 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 #### Node.js
 1.  [如何写一个 TypeScript 库](./nodejs/how-to-write-a-typescript-library.md)
 2.  [package.json 指南](./nodejs/package.json-manual.md)
-3.  [Vite CookBook](./nodejs/vite-cookbook.md)
-4.  [Vue CookBook](./nodejs/vue-cookbook.md)
+3.  [Vite Cookbook](./nodejs/vite-cookbook.md)
+4.  [Vue Cookbook](./nodejs/vue-cookbook.md)
+5.  [npm Cookbook](./nodejs/npm-cookbook.md)
 
 
 ### DotNet
-1.  [CefSharp CookBook](./dotnet/cefsharp-cookbook.md)
+1.  [CefSharp Cookbook](./dotnet/cefsharp-cookbook.md)
 
 ### Git
-1.  [Git CookBook](./git/git-cookbook.md)
+1.  [Git Cookbook](./git/git-cookbook.md)
