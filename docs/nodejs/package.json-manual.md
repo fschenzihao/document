@@ -48,7 +48,7 @@ https://registry.npmjs.org/[name]/-/[name]-[version].tgz
 
 ``` json
 {
-    "version": "x.y.z"
+    "version": "x.y.z-alpha.1"
 ｝
 ```
 
@@ -59,6 +59,13 @@ https://registry.npmjs.org/[name]/-/[name]-[version].tgz
 - x 代表主版本号 Major，通常在涉及重大功能更新，产生了破坏性变更时会更新此版本号
 - y 代表次版本号 Minor，在引入了新功能，但未产生破坏性变更，依然向下兼容时会更新此版本号
 - z 代表修订号 Patch，在修复了一些问题，也未产生破坏性变更时会更新此版本号
+- -alpha.1 代表预发布版本号 pre-release，有以下选择 alpha(内测), beta(灰度测试), rc(生产候选)
+
+::: tip 
+版本号大小排序
+
+16.7.1-alpha.1 < 16.7.1-beta.1 < 16.7.1-rc.1 < 16.7.1
+:::
 
 ### author
 
