@@ -29,6 +29,7 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 4.  [Vue Cookbook](./nodejs/vue-cookbook.md)
 5.  [npm Cookbook](./nodejs/npm-cookbook.md)
 5.  [JavaScript Cookbook](./javascript/javascript-cookbook.md)
+6.  [TypeScript Cookbook](./Javascript/typescript-cookbook.md)
 
 
 ### DotNet
