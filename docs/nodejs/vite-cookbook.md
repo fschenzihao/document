@@ -101,3 +101,31 @@ export default {
   ``` javascript
   console.log(import.meta.env.VITE_APP_Version) // '文档' 或者 '类库'
   ```
+  
+
+## 4.打包排除外部模块
+
+例如将 `element-plus` 和 `@element-plus/icons-vue` 二次封装打包输出自己的组件类库 `my-ui`，
+
+若需要实现在用户站点项目里可共用同一 `vue` 和 `element-plus` 实例，则打包时需要排除 `element-plus` 模块代码。
+
+```js
+// rollup.config.js
+import { fileURLToPath } from 'node:url';
+
+export default {
+	//...,
+	external: [
+		'vue',
+        '@element-plus/icons-vue',
+        'element-plus',
+        // 注意
+        // 若使用了自动引入插件 "unplugin-auto-import" 和 "unplugin-auto-imort"插件，
+        // 则需要使用下方正则表达式匹配 "element-plus" 和 "element-plus/*" 的模块引入。
+        // 因为自动引入的语句不是 import { xx } from 'element-plus'，
+        // 而是 import { xx } from 'element-plus/es'
+		/^(element-plus)(\/)?/i,
+	]
+};
+```
+
