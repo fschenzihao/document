@@ -37,3 +37,4 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 
 ### Git
 1.  [Git Cookbook](./git/git-cookbook.md)
+1.  [Gitblit Cookbook](./git/gitblit-cookbook.md)
