@@ -2,6 +2,7 @@ import { navbar, sidebar } from './configs';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { defaultTheme } from '@vuepress/theme-default';
 import { viteBundler } from '@vuepress/bundler-vite';
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { defineUserConfig } from 'vuepress';
 
 export default defineUserConfig({
@@ -59,6 +60,11 @@ export default defineUserConfig({
           buttonText: '搜索文档',
         },
       },
+    }),
+    // Markdown mermaid 插件
+    mdEnhancePlugin({
+      // 启用 mermaid
+      mermaid: true,
     }),
   ],
 });
