@@ -33,9 +33,9 @@ export default defineUserConfig({
 
     // page meta
     editLink: true,
-    editLinkText: '在 GitHub 上编辑此页',
+    editLinkText: '编辑此页',
     lastUpdated: true,
-    lastUpdatedText: '上次更新',
+    lastUpdatedText: '上次编辑于',
     contributors: false,
     contributorsText: '贡献者',
 
