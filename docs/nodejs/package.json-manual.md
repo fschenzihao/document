@@ -521,15 +521,27 @@ lint-staged 通常配合 husky 这样的 git-hooks 工具一起使用。git-hook
 
 ### peerDependencies
 
+对等依赖关系。用于声明项目的一个或多个直接依赖项，这些依赖项并不是由该包自身直接提供，而是期望在其宿主项目中安装相应依赖。
+
+当用户安装含有 `peerDependencies` 的包时，如果宿主项目中没有满足版本要求的对应依赖，NPM 7 及以后版本会尝试自动安装它们。
+
+如果宿主项目已存在相应依赖但版本不符合 `peerDependencies` 中指定的范围，那么 `npm install` 安装项目所有依赖时将会报错中断。
+
 ```json
 {
   "peerDependencies": {
-    "package-3": "^2.7.18"
+    "package-foo": "^2.7.18"
   }
 }
 ```
 
-对等依赖关系。声明你的包与其他包版本的兼容性。
+例如上述代码中，宿主项目在使用时必须安装 `package-foo` 依赖包，并且依赖版本为 `^2.7.18`。
+
+::: tip 何时使用 
+- **插件系统:** 当开发一个插件或库，它设计为扩展另一个库或框架的功能时，常常使用 `peerDependencies`。例如，一个针对 `Vue.js` 框架编写的插件在 `peerDependencies` 中声明对 `vue` 的依赖，意味着使用该插件的项目必须先安装了 `Vue.js`。
+
+- **共享依赖避免重复安装:** 如果宿主项目已安装了某个包(例如 `lodash`)，并且这个包不应该被重复打包，可由宿主项目提供，那么这个库就应作为 `peerDependency`。
+:::
 
 ### peerDependenciesMeta
 
