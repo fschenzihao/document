@@ -5,36 +5,33 @@
 
 Hello,这里是M3开发陈梓豪的共享文档。😃
 
+### SQLServer 
+1.  [SQL Server 性能相关](./sql-server/sqlserver-performance-analysis.md)
+<br/>└ 1.2 [SQL Server 性能相关-执行计划的统计信息(编写中...)](./sql-server/sqlserver-performance-analysis-query-satas.md)
+2.  [SQL Server Profiler（数据库跟踪）使用说明](./sql-server/sqlserver-profiler.md)
+3.  [SQL Server 变更数据捕获（CDC）](./sql-server/sqlserver-cdc.md)
+4.  [SQL Server 常用功能相关](./sql-server/sqlserver-common-functions.md)
 
-### 文档列表
+### Windows Server 
+1.  [Windows Server 系统的性能分析](./windows-server/windows-server-performance-analysis.md)
 
-#### SQLServer 
-1.  [SQL Server 性能相关](./sqlserver-performance-analysis.md)
-<br/>└ 1.2 [SQL Server 性能相关-执行计划的统计信息(编写中...)](./sqlserver-performance-analysis-query-satas.md)
-2.  [SQL Server Profiler（数据库跟踪）使用说明](./sqlserver-profiler.md)
-3.  [SQL Server 变更数据捕获（CDC）](./sqlserver-cdc.md)
-4.  [SQL Server 常用功能相关](./sqlserver-common-functions.md)
+### DotTrace
+1.  [DotTrace 性能分析器使用说明](./dottrace/dottrace.md)
 
-#### Windows Server 
-1.  [Windows Server 系统的性能分析](./windows-server-performance-analysis.md)
-
-#### DotTrace
-1.  [dotTrace 性能分析器使用说明](./dottrace.md)
-
-
-#### Node.js
+### Node.js
 1.  [如何写一个 TypeScript 库](./nodejs/how-to-write-a-typescript-library.md)
 2.  [package.json 指南](./nodejs/package.json-manual.md)
 3.  [Vite Cookbook](./nodejs/vite-cookbook.md)
 4.  [Vue Cookbook](./nodejs/vue-cookbook.md)
 5.  [npm Cookbook](./nodejs/npm-cookbook.md)
-5.  [JavaScript Cookbook](./javascript/javascript-cookbook.md)
-6.  [TypeScript Cookbook](./Javascript/typescript-cookbook.md)
 
+### JavaScript
+1.  [JavaScript Cookbook](./javascript/javascript-cookbook.md)
+2.  [TypeScript Cookbook](./javascript/typescript-cookbook.md)
 
 ### DotNet
 1.  [CefSharp Cookbook](./dotnet/cefsharp-cookbook.md)
 
 ### Git
 1.  [Git Cookbook](./git/git-cookbook.md)
-1.  [Gitblit Cookbook](./git/gitblit-cookbook.md)
+2.  [Gitblit Cookbook](./git/gitblit-cookbook.md)
