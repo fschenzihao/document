@@ -31,6 +31,7 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 
 ### DotNet
 1.  [CefSharp Cookbook](./dotnet/cefsharp-cookbook.md)
+2.  [对 Windows 窗体控件进行线程安全调用](./dotnet/make-thread-safe-calls-to-windows-forms-controls.md)
 
 ### Git
 1.  [Git Cookbook](./git/git-cookbook.md)
