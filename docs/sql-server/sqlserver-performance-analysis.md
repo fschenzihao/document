@@ -458,13 +458,35 @@ GO
 
 
 ---
-## 3 收缩日志
+## 3 日志文件
 
-SQL Server日志无法收缩的部分解决办法
+### 3.1 收缩日志
+
+```sql
+-- 以下示例将 AdventureWorks2022 数据库中的日志文件收缩到 1 MB。
+USE AdventureWorks2022;
+GO
+-- 首先需要通过将数据库恢复模式设置为 SIMPLE 来截断该文件
+ALTER DATABASE AdventureWorks2022
+SET RECOVERY SIMPLE;
+GO
+-- 日志文收缩到 1 MB
+-- AdventureWorks2022_Log 为日志文件的“逻辑名称
+DBCC SHRINKFILE (AdventureWorks2022_Log, 1);
+GO
+-- Reset the database recovery model.
+ALTER DATABASE AdventureWorks2022
+SET RECOVERY FULL;
+GO
+```
+
+有关详细信息，请参阅[DBCC SHRINKFILE (Transact-SQL)](https://learn.microsoft.com/zh-cn/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql?view=sql-server-ver16#examples)
+
+### 3.2 日志无法收缩的部分解决办法
 
 > [MSDN文档： 可能延迟日志截断的因素](https://docs.microsoft.com/zh-cn/sql/relational-databases/logs/the-transaction-log-sql-server?view=sql-server-ver15#factors-that-can-delay-log-truncation)
 
-### 3.1 查询日志无法收缩的原因
+1. 查询日志无法收缩的原因
 
 ```sql
 /**********************************/ 
@@ -474,7 +496,8 @@ select log_reuse_wait_desc
 from sys.databases 
 where name = '数据库名称'
 ```
-### 3.2 查询结果说明
+
+2. 查询结果说明
 
  - **NOTHING**
     **说明：**
