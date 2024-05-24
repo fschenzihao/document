@@ -138,3 +138,32 @@ GO
 [TRY...CATCH (Transact-SQL)](https://learn.microsoft.com/zh-cn/sql/t-sql/language-elements/try-catch-transact-sql?view=sql-server-ver16)
 
 [@@TRANCOUNT (Transact-SQL)](https://learn.microsoft.com/zh-cn/sql/t-sql/functions/trancount-transact-sql?view=sql-server-ver16)
+
+## 4 会话
+
+### 4.1 查询数据库的连接会话
+
+```sql
+SELECT 
+  sess.session_id, login_name, DB_NAME(database_id) AS [数据库], 
+  host_name as [主机名称], program_name as [客户端程序名称],
+  connect_time, last_request_end_time
+FROM sys.dm_exec_sessions AS sess
+INNER JOIN sys.dm_exec_connections AS conn
+    ON sess.session_id = conn.session_id;
+```
+
+有关详细信息，请参阅：[sys.dm_exec_sessions (Transact-SQL)](https://learn.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?view=sql-server-ver16)
+
+
+### 4.2 当前连接的会话 ID
+```sql
+SELECT @@SPID;
+```
+
+### 4.3 结束会话
+```sql
+-- 51 是 session_id (会话 ID)
+KILL 51;
+```
+有关详细信息，请参阅：[(KILL (Transact-SQL)](https://learn.microsoft.com/zh-cn/sql/t-sql/language-elements/kill-transact-sql?view=sql-server-ver16)
