@@ -12,6 +12,7 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 3.  [SQL Server 变更数据捕获（CDC）](./sql-server/sqlserver-cdc.md)
 4.  [SQL Server 常用功能相关](./sql-server/sqlserver-common-functions.md)
 5.  [使用 SQLIOSim 实用工具模拟磁盘子系统上的SQL Server活动](https://learn.microsoft.com/zh-cn/troubleshoot/sql/tools/sqliosim-utility-simulate-activity-disk-subsystem)
+6.  [SQL Server 修复数据库](./sql-server/sqlserver-repair-database.md)
 
 ### Windows Server 
 1.  [Windows Server 系统的性能分析](./windows-server/windows-server-performance-analysis.md)
