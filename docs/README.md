@@ -19,11 +19,13 @@ Hello,这里是M3开发陈梓豪的共享文档。😃
 1.  [DotTrace 性能分析器使用说明](./dottrace/dottrace.md)
 
 ### Node.js
-1.  [如何写一个 TypeScript 库](./nodejs/how-to-write-a-typescript-library.md)
-2.  [package.json 指南](./nodejs/package.json-manual.md)
-3.  [Vite Cookbook](./nodejs/vite-cookbook.md)
-4.  [Vue Cookbook](./nodejs/vue-cookbook.md)
-5.  [npm Cookbook](./nodejs/npm-cookbook.md)
+- [package.json 指南](./nodejs/package.json-manual.md)
+- [包管理器配置](nodejs/package-manager-configuration.md)
+- [Vite Cookbook](./nodejs/vite-cookbook.md)
+- [Vue Cookbook](./nodejs/vue-cookbook.md)
+- [npm Cookbook](./nodejs/npm-cookbook.md)
+- [如何写一个 TypeScript 库](./nodejs/how-to-write-a-typescript-library.md)
+
 
 ### JavaScript
 1.  [JavaScript Cookbook](./javascript/javascript-cookbook.md)
