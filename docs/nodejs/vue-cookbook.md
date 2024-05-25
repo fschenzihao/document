@@ -89,3 +89,44 @@ export default defineConfig({
 
 ---
 
+### Vue CLI 启动后内存溢出
+
+```bash
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+```
+
+是因为 ForkTsCheckerWebpackPlugin 插件内存限制了 *（ForkTsCheckerWebpackPlugin 是一个Webpack插件，用于在单独的进程中运行TypeScript类型检查。）*
+
+解决方法
+
+```js
+// in vue.config.js
+
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  configureWebpack: config => {
+
+    // get a reference to the existing ForkTsCheckerWebpackPlugin
+    const existingForkTsChecker = config.plugins.filter(
+      p => p instanceof ForkTsCheckerWebpackPlugin,
+    )[0];
+
+    // remove the existing ForkTsCheckerWebpackPlugin
+    // so that we can replace it with our modified version
+    config.plugins = config.plugins.filter(
+      p => !(p instanceof ForkTsCheckerWebpackPlugin),
+    );
+
+    // copy the options from the original ForkTsCheckerWebpackPlugin
+    // instance and add the memoryLimit property
+    const forkTsCheckerOptions = existingForkTsChecker.options;
+    forkTsCheckerOptions.memoryLimit = 8192;
+
+    config.plugins.push(new ForkTsCheckerWebpackPlugin(forkTsCheckerOptions));
+  },
+};
+```
+
+
+
